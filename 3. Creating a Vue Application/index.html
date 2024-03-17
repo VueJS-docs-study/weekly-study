@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3. Creating a Vue Application</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+    <global-component></global-component>
+    <local-component></local-component>
+</div>
+<script type="module">
+    const { createApp } = Vue;
+
+    const LocalComponent = {
+        template: '<div>Local Component</div>'
+    };
+
+    const GlobalComponent = {
+        template: '<div @click="generateError" :style="globalComponentStyle">Global Component</div>',
+        data() {
+            return {
+                globalComponentStyle: {
+                    border: '1px solid black'
+                }
+            }
+        },
+        methods: {
+            generateError() {
+                this.globalComponentStyle.border = '1px solid red';
+                this.globalComponentStyle.background = 'red';
+
+                throw new Error('Error from Global Component');
+            }
+        }
+    };
+
+    const app = createApp({
+        components: {
+            GlobalComponent,
+            LocalComponent
+        }
+    });
+
+    app.component('GlobalComponent', GlobalComponent);
+
+    app.config.errorHandler = (err, vm, info) => {
+        alert('GlobalComponent Error!')
+    };
+
+    app.mount("#app");
+</script>
+</body>
+</html>

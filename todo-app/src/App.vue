@@ -1,19 +1,16 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import LoginPage from './views/LoginPage.vue'
+import MainPage from './views/MainPage.vue'
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
   </header>
 
   <main>
-    <TheWelcome />
+    <LoginPage />
+    <MainPage />
   </main>
 </template>
 
@@ -44,4 +41,4 @@ header {
     flex-wrap: wrap;
   }
 }
-</style>
+</style>./components/LoginForm.vue

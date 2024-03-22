@@ -1,5 +1,6 @@
-# IntelliJ IDEA 관련
+# IDE
 .idea/
+.vscode/
 
 # Mac OS 파일 시스템 관련
 .DS_Store
